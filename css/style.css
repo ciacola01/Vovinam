@@ -1,0 +1,166 @@
+:root {
+    --rosso: rgb(218, 37, 29);
+    --giallo: rgb(255, 205, 0);
+    --blu: rgb(0, 50, 150);
+    --azzurro: rgb(100, 150, 220);
+    --bianco: rgb(255, 255, 255);
+    --radius: 10px;
+    --max-width: 1200px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* --- Header --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--blu);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 68px;
+  font-weight: 700;
+  color: var(--blu);
+}
+
+/* Brand (logo + titolo) */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0; /* permette al testo di troncare se serve */
+}
+.logo img {
+  flex-shrink: 0;
+  height: auto;
+  display: block;
+}
+.logo-text {
+  line-height: 1.2;
+  font-size: 1rem;
+}
+
+/* --- Navigazione --- */
+.navigation ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: var(--blu);
+  font-weight: 500;
+  font-size: .95rem;
+  padding: .25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color .3s ease-in-out, border-color .3s ease-in-out;
+}
+.navigation a:hover,
+.navigation a:focus-visible {
+  color: var(--giallo);
+  border-color: var(--giallo);
+  outline: none;
+}
+
+/* CTA "Contatti" */
+.btn-nav {
+  background: var(--giallo);
+  border-radius: var(--radius);
+  padding: .55rem 1rem;
+  margin-left: .5rem;
+  border-bottom: none !important;
+  transition: background .3s ease-in-out;
+}
+.btn-nav:hover,
+.btn-nav:focus-visible {
+  background: var(--blu);
+  color: var(--bianco);
+}
+
+/* --- Hamburger --- */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: .5rem;
+}
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--blu);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+
+/* --- Mobile --- */
+@media (max-width: 1024px) {
+  .menu-toggle { display: flex; }
+
+  .brand-name { font-size: .9rem; }
+
+  .navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bianco);
+    border-bottom: 1px solid var(--blu);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .navigation.open { max-height: 600px; }
+
+  .navigation ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 1rem 1.25rem;
+  }
+  .navigation a {
+    display: block;
+    padding: .75rem 0;
+    border-bottom: 1px solid rgba(0, 50, 150, .1);
+  }
+  .btn-nav {
+    margin-left: 0;
+    margin-top: .5rem;
+    text-align: center;
+  }
+}
+
+/* Tablet stretti: nascondi il nome, tieni il logo */
+@media (max-width: 480px) {
+  .logo-text { display: none; }
+}
+
+.navigation ul{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
